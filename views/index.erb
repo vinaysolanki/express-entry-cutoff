@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Express Entry Scores</title>
+  <link rel="stylesheet" href="/build/tailwind.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+</head>
+<body class="bg-gray-300">
+  <h1 class="text-4xl mt-10 font-bold text-center text-blue-500">Express Entry Scores</h1>
+  <div class="max-w-2xl mt-10 mx-auto">
+    <h2 class="text-gray-900 font-bold text-2xl text-center pb-2">2018</h2>
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [{
+                label: 'Cutoff Scores',
+                data: [455, 467, 480, 462, 458, 447],
+                backgroundColor: 'rgba(0, 99, 0, 0.1)',
+                borderColor: 'rgba(199, 0, 0, 0.2)',
+                borderWidth: 2
+            }]
+          },
+          options: {
+            tooltips: {
+              callbacks: {
+                title: function (item) {
+                  return item[0].value
+                },
+                footer: function (item) {
+                  return "Invitations: " + Math.floor(Math.random() * 1000) + "\nDate: " + item[0].label;
+                },
+              },
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              titleFontSize: 18,
+              titleFondStyle: 'bold',
+              bodyFontSize: 0,
+              footerFontSize: 14
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        max: 1200,
+                        beginAtZero: true
+                    }
+                }]
+            }
+          }
+      });
+    </script>
+  </div>
+</body>
+</html>

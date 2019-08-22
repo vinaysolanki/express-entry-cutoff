@@ -1,0 +1,7 @@
+<h1>Invitation Rounds</h1>
+
+<% @rounds.each do |round| %>
+  <h3>Date: <%= round.date %></h3>
+  <h4>Invitations: <%= round.invitations %></h4>
+  <h4>Cutoff Score: <%= round.cutoff_score %></h4>
+<% end %>
